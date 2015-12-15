@@ -35,7 +35,7 @@ module Houston
 
       @socket = TCPSocket.new(@uri.host, @uri.port)
 
-      context = OpenSSL::SSL::SSLContext.new
+      context = OpenSSL::SSL::SSLContext.new(:TLSv1_2_client)
       context.key = OpenSSL::PKey::RSA.new(@certificate, @passphrase)
       context.cert = OpenSSL::X509::Certificate.new(@certificate)
 
